@@ -130,22 +130,19 @@
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
-    <Content Include="Scripts\" />
-    <Content Include="Scripts\" />
-    <Content Include="Scripts\" />
     <None Include="Scripts\jquery-2.1.3.intellisense.js" />
     <None Include="fonts\glyphicons-halflings-regular.woff" />
     <None Include="fonts\glyphicons-halflings-regular.ttf" />
     <None Include="fonts\glyphicons-halflings-regular.svg" />
     <None Include="fonts\glyphicons-halflings-regular.eot" />
-	<Compile Include="Infrastructure\AuthorizeActionFilter.fs" />
-	<Compile Include="Models\UsernamePasswordModel.fs" />
+    <Compile Include="Infrastructure\AuthorizeActionFilter.fs" />
+    <Compile Include="Models\UsernamePasswordModel.fs" />
     <Compile Include="Controllers\HomeController.fs" />
     <Compile Include="Controllers\ValuesController.fs" />
     <Content Include="Views\Web.config" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\Logon.cshtml" />
-	<Content Include="Views\Home\Secret.cshtml" />
+    <Content Include="Views\Home\Secret.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\_ViewStart.cshtml" />
@@ -154,7 +151,7 @@
     <Compile Include="Global.asax.fs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Content Include="packages.config" />    
+    <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Antlr3.Runtime">

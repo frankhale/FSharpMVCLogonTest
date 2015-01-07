@@ -6,6 +6,7 @@ open System.Web.Routing
 type AuthorizeActionFilter() = 
   inherit ActionFilterAttribute()
     override this.OnActionExecuting (filterContext : ActionExecutingContext) = 
+      // This is a bit lame / naive / silly ... we could do much better here!
       if filterContext.HttpContext.Session.["CurrentUser"] = null then do        
         let redirectDictionary = new RouteValueDictionary()
         redirectDictionary.Add("action", "Logon")
