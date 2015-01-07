@@ -138,7 +138,8 @@
     <None Include="fonts\glyphicons-halflings-regular.ttf" />
     <None Include="fonts\glyphicons-halflings-regular.svg" />
     <None Include="fonts\glyphicons-halflings-regular.eot" />
-    <Compile Include="Models\UsernamePasswordModel.fs" />
+	<Compile Include="Infrastructure\AuthorizeActionFilter.fs" />
+	<Compile Include="Models\UsernamePasswordModel.fs" />
     <Compile Include="Controllers\HomeController.fs" />
     <Compile Include="Controllers\ValuesController.fs" />
     <Content Include="Views\Web.config" />
