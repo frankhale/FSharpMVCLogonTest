@@ -1,0 +1,33 @@
+@using FSharpMVCLogonTest.Models
+@model UsernamePasswordModel
+@{
+	ViewBag.Title = "Logon";
+}
+<h2>@ViewBag.Title</h2>
+<div>
+	Please provide a username and password to login.
+	<br />
+	<br />
+	@using (Html.BeginForm())
+	{
+		@Html.AntiForgeryToken()
+		@Html.ValidationSummary(true, "", new { @class = "text-danger" })
+		<table>
+			<tr>
+				<td>UserName:&nbsp;</td>
+				<td>@Html.TextBoxFor(model => model.UserName)</td>
+				<td>@Html.ValidationMessageFor(model => model.UserName, "", new { @class = "text-danger" })</td>
+			</tr>
+			<tr>
+				<td>Password:&nbsp;</td>
+				<td>@Html.PasswordFor(model => model.Password)</td>
+				<td>@Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })</td>
+			</tr>
+		</table>
+		<input type="submit" value="Login" />
+	}
+</div>
+
+@section Scripts {
+	@Scripts.Render("~/bundles/jqueryval")
+}

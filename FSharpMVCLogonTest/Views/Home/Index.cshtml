@@ -1,0 +1,11 @@
+@if (Session["CurrentUser"] != null)
+{
+	<div class="bs-callout bs-callout-success">
+		Welcome, @Session["CurrentUser"]
+	</div>
+}
+else { 
+	<div class="bs-callout bs-callout-danger">
+		You are not logged in
+	</div>
+}
