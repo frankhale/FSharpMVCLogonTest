@@ -9,6 +9,5 @@ type AuthorizeActionFilter() =
     // This is a bit lame / naive / silly ... we could do much better here!
     if filterContext.HttpContext.Session.["CurrentUser"] = null then
       do let redirectDictionary = new RouteValueDictionary()
-         redirectDictionary.Add("action", "Logon")
-         redirectDictionary.Add("controller", "Home")
+         ["action", "Logon"; "controller", "Home"] |> Seq.iter redirectDictionary.Add
          filterContext.Result <- new RedirectToRouteResult(new RouteValueDictionary(redirectDictionary))
