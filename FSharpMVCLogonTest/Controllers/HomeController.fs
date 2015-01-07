@@ -26,15 +26,12 @@ type HomeController() =
     member private this.InvalidLoginAttempt (model : UsernamePasswordModel) = 
       this.ModelState.AddModelError("", "Invalid login attempt.")
       this.View(model) :> ActionResult
-
-    [<AllowAnonymous>]
+    
     member this.Index () = this.View()
     
-    [<AllowAnonymous>]
     member this.Logon () = this.View()    
     
     [<HttpPost>]
-    [<AllowAnonymous>]
     [<ValidateAntiForgeryToken>]
     member this.Logon (model : UsernamePasswordModel) =          
       match this.ModelState.IsValid with
