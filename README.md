@@ -8,7 +8,7 @@ A naive F# MVC example to demonstrate username / password logon
 - Clone and open in Visual Studio 2013
 - Build
 - Run
-- Click the Logon  
+- Click the Logon link in the navbar  
 		- Username = Frank  
 		- Password = 123456  
 
