@@ -26,20 +26,25 @@ type HomeController() =
     this.ModelState.AddModelError("", "Invalid login attempt.")
     this.View(model) :> ActionResult
 
+  member private this.LogUserIn(model : UsernamePasswordModel) =
+    this.Session.["CurrentUser"] <- model.UserName
+    this.RedirectToAction("Index", "Home") :> ActionResult
+
+  /////////////
+  // Actions //
+  /////////////
+
   member this.Index() = this.View()
   member this.Logon() = this.View()
 
   [<HttpPost>]
   [<ValidateAntiForgeryToken>]
   member this.Logon(model : UsernamePasswordModel) =
-    match this.ModelState.IsValid with
-    | false -> this.InvalidLoginAttempt(model)
-    | true ->
-      match ValidateUser(model) with
-      | true ->
-        this.Session.["CurrentUser"] <- model.UserName
-        this.RedirectToAction("Index", "Home") :> ActionResult
-      | false -> this.InvalidLoginAttempt(model)
+    [this.ModelState.IsValid; ValidateUser(model)]
+    |> List.forall ((=) true)
+    |> function
+       | true -> this.LogUserIn(model)
+       | _ -> this.InvalidLoginAttempt(model)
 
   [<AuthorizeActionFilter>]
   member this.Logout() =
