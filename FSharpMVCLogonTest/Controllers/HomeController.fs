@@ -8,13 +8,6 @@ open FSharpMVCLogonTest.Models
 type HomeController() =
   inherit Controller()
 
-  let ValidateUser(model : UsernamePasswordModel) =
-    // Just do something simple so we can see if it works, LOL!
-    match model.UserName.ToLower(), model.Password with
-    | "frank", "123456" -> true
-    | "matt", "123456" -> true
-    | _ -> false
-
   member private this.InvalidLoginAttempt(model : UsernamePasswordModel) =
     this.ModelState.AddModelError("", "Invalid login attempt.")
     this.View(model) :> ActionResult
@@ -33,7 +26,7 @@ type HomeController() =
   [<HttpPost>]
   [<ValidateAntiForgeryToken>]
   member this.Logon(model : UsernamePasswordModel) =
-    [this.ModelState.IsValid; ValidateUser(model)]
+    [this.ModelState.IsValid; model.ValidateUser()]
     |> List.forall ((=) true)
     |> function
        | true -> this.LogUserIn(model)
