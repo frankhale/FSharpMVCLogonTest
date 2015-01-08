@@ -8,29 +8,22 @@ open FSharpMVCLogonTest.Models
 type HomeController() =
   inherit Controller()
 
-  member private this.InvalidLoginAttempt(model : UsernamePasswordModel) =
-    this.ModelState.AddModelError("", "Invalid login attempt.")
-    this.View(model) :> ActionResult
-
-  member private this.LogUserIn(model : UsernamePasswordModel) =
-    this.Session.["CurrentUser"] <- model.UserName
-    this.RedirectToAction("Index", "Home") :> ActionResult
-
-  /////////////
-  // Actions //
-  /////////////
-
   member this.Index() = this.View()
   member this.Logon() = this.View()
 
   [<HttpPost>]
   [<ValidateAntiForgeryToken>]
   member this.Logon(model : UsernamePasswordModel) =
-    [this.ModelState.IsValid; model.ValidateUser()]
-    |> List.forall ((=) true)
-    |> function
-       | true -> this.LogUserIn(model)
-       | _ -> this.InvalidLoginAttempt(model)
+    let isValid = [this.ModelState.IsValid; model.ValidateUser()]
+                  |> List.forall ((=) true)
+
+    match isValid with
+    | true -> 
+      this.Session.["CurrentUser"] <- model.UserName
+      this.RedirectToAction("Index", "Home") :> ActionResult
+    | false -> 
+      this.ModelState.AddModelError("", "Invalid login attempt.")
+      this.View(model) :> ActionResult
 
   [<AuthorizeActionFilter>]
   member this.Logout() =
