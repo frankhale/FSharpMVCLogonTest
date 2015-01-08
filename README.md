@@ -11,6 +11,9 @@ A naive F# MVC example to demonstrate username / password logon
 - Click the Logon link in the navbar  
 		- Username = Frank  
 		- Password = 123456  
+- Click the 'Secret' link on the navbar
+- Click the 'Logout' link on the navbar
+- Live life happily ever after...
 
 ##License
 
