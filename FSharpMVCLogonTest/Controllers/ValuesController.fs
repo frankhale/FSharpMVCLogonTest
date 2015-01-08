@@ -1,9 +1,5 @@
 namespace FSharpMVCLogonTest.Controllers
 
-open System
-open System.Collections.Generic
-open System.Linq
-open System.Net.Http
 open System.Web.Http
 
 /// Retrieves values.

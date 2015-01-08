@@ -1,7 +1,5 @@
 module LogonTest.AssemblyInfo
 open System.Reflection
-open System.Runtime.CompilerServices
-
 
 [<assembly: AssemblyTitle("FSharpMVCLogonTest")>]
 [<assembly: AssemblyDescription("")>]

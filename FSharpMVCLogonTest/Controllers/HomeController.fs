@@ -1,13 +1,6 @@
 namespace FSharpMVCLogonTest.Controllers
 
-open System
-open System.Collections.Generic
-open System.ComponentModel.DataAnnotations
-open System.Linq
-open System.Web
 open System.Web.Mvc
-open System.Web.Mvc.Ajax
-open System.Web.Routing
 open FSharpMVCLogonTest.Infrastructure
 open FSharpMVCLogonTest.Models
 
